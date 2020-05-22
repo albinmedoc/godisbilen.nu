@@ -1,0 +1,11 @@
+{
+  "name": "godisbilen",
+  "version": "1.0.0",
+  "description": "Swedish website for ordering a \"Candy car\" to a specific adress",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Albin Médoc",
+  "license": "ISC"
+}
