@@ -6,7 +6,7 @@ const OrderSchema = mongoose.Schema({
         required: true,
     },
     placed: {
-        type: String,
+        type: Date,
         required: true,
         default: Date.now,
     },
