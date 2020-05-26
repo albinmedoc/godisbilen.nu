@@ -1,9 +1,14 @@
 const mongoose = require('mongoose');
+const GeoJSON = require('mongoose-geojson-schema');
 
 const OrderSchema = mongoose.Schema({
-    order_number_id: {
+    order_number: {
         type: String,
         required: true,
+    },
+    phone_number: {
+        type: String,
+        required: true
     },
     placed: {
         type: Date,
@@ -24,13 +29,12 @@ const OrderSchema = mongoose.Schema({
         require: false,
     },
     location: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Location',
+        type: mongoose.Schema.Types.Point,
         required: true,
     },
-    user: {
+    region: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'Region',
         required: true,
     },
 });

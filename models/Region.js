@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Polygon = require('./schemas/Polygon');
+const GeoJSON = require('mongoose-geojson-schema');
 
 const RegionSchema = mongoose.Schema({
     name: {
@@ -9,18 +9,12 @@ const RegionSchema = mongoose.Schema({
     active: {
         type: Boolean,
         required: true,
-        default: true
+        default: true,
     },
     bounds: {
-        type: Polygon,
-        required: true
+        type: mongoose.Schema.Types.Polygon,
+        required: true,
     },
-    locations: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Location',
-        },
-    ],
 });
 
 module.exports = mongoose.model('Region', RegionSchema);
