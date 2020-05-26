@@ -4,25 +4,22 @@ const axios = require('axios');
 const client = new Client({ axiosInstance: axios.create() });
 
 const timeBetween = async (loc1, loc2) => {
-    client
-        .distancematrix({
+    try {
+        let res = await client.distancematrix({
             params: {
-                origins: [{ lat: loc1.lat, lng: loc1.lng }],
-                destinations: [{ lat: loc2.lat, lng: loc2.lng }],
+                origins: [{ lat: loc1[0], lng: loc1[1] }],
+                destinations: [{ lat: loc2[0], lng: loc2[1] }],
                 mode: 'driving',
                 key: process.env.GOOGLE_MAPS_API_KEY,
             },
-        })
-        .then((r) => {
-            if (r.data.status === Status.OK) {
-                console.log(r.data.rows[0].elements[0].duration.value);
-                return r.data.rows[0].elements[0].duration.value;
-            }
-            return 600;
-        })
-        .catch(() => {
-            return 600;
         });
+        if (res.data.status === Status.OK) {
+            return res.data.rows[0].elements[0].duration.value;
+        }
+        return 600;
+    } catch (error) {
+        return 600;
+    }
 };
 
 exports.timeBetween = timeBetween;
