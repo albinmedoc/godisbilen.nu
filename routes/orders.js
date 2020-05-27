@@ -1,32 +1,92 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
+const moment = require('moment');
 const Order = require('../models/Order');
 const Region = require('../models/Region');
 const utilsLocation = require('../utils/location');
-const utilsDate = require('../utils/date');
 
 // Get orders
 router.get('/', async (req, res) => {
+    // Parse location
+    try {
+        var location = req.query.location
+            ? {
+                  type: 'Point',
+                  coordinates: JSON.parse(req.query.location),
+              }
+            : undefined;
+    } catch (error) {
+        res.status(422)
+            .json({ message: 'Could not parse coordinates.' })
+            .send();
+    }
 
-    // TODO, check query params, some has to be numbers, json and dates
+    let filter = [
+        // Add new fields
+        {
+            $addFields: {
+                placed_date: {
+                    $dateToString: {
+                        format: '%Y-%m-%d',
+                        date: '$placed',
+                    },
+                },
+                estimated_delivery_date: {
+                    $dateToString: {
+                        format: '%Y-%m-%d',
+                        date: '$estimated_delivery',
+                    },
+                },
+                completed_date: {
+                    $dateToString: {
+                        format: '%Y-%m-%d',
+                        date: '$completed',
+                    },
+                },
+            },
+        },
 
-    // Create query filter based on request query values
-    let filter = {
-        ...(req.query.order_number && {phone_number:req.query.order_number}),
-        ...(req.query.phone_number && {phone_number:req.query.phone_number}),
-        ...(req.query.placed && {phone_number:req.query.placed}),
-        ...(req.query.phase && {phone_number:req.query.phase}),
-        ...(req.query.estimated_delivery && {phone_number:req.query.estimated_delivery}),
-        ...(req.query.completed && {phone_number:req.query.completed}),
-        ...(req.query.location && {phone_number:req.query.location}),
-        ...(req.query.region && {phone_number:req.query.region}),
-    };
+        // Filter fields based on request query params
+        {
+            $match: {
+                ...(req.query.id && {
+                    _id: new mongoose.Types.ObjectId(req.query.id),
+                }),
+                ...(req.query.order_number && {
+                    order_number: req.query.order_number,
+                }),
+                ...(req.query.phone_number && {
+                    phone_number: req.query.phone_number,
+                }),
+                ...(req.query.placed && {
+                    placed_date: req.query.placed,
+                }),
+                ...(req.query.phase && { phase: req.query.phase }),
+                ...(req.query.estimated_delivery && {
+                    estimated_delivery_date: req.query.estimated_delivery,
+                }),
+                ...(req.query.completed && {
+                    completed_date: req.query.completed,
+                }),
+                ...(location && { location: location }),
+                ...(req.query.region && { region: req.query.region }),
+            },
+        },
+        // Hide added fields
+        {
+            $project: {
+                placed_date: 0,
+                estimated_delivery_date: 0,
+                completed_date: 0,
+            },
+        },
+    ];
 
     // Get orders from database
-    let orders = await Order.find(filter).exec();
+    let orders = await Order.aggregate(filter).exec();
 
     res.json(orders).send();
-
 });
 
 // Create a new order
@@ -80,11 +140,11 @@ router.post('/', async (req, res) => {
     let order = new Order({
         order_number: Date.now().toString(),
         phone_number: phone_number,
-        estimated_delivery: utilsDate.dateAdd(
-            last_order ? last_order.estimated_delivery : new Date(),
-            'second',
-            time_between
-        ),
+        placed: moment.utc(new Date()).toDate(),
+        estimated_delivery: moment
+            .utc(last_order ? last_order.estimated_delivery : new Date())
+            .add(time_between, 'seconds')
+            .toDate(),
         location: point,
         region: region._id,
     });
