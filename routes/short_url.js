@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
 
     if(!path || !path.match(/^[0-9a-zA-Z]+$/) || !url){
         res.status(422).send();
-        return
+        return;
     }
     let short_url = new ShortURL({
         path: path,
@@ -30,11 +30,12 @@ router.post('/', (req, res) => {
         visits: 0,
         created: moment.utc().toDate()
     });
-
-    short_url.save((err) => {
-        console.log(err);
+    
+    short_url.save().then(() => {
+        res.json(short_url).send();
+    }).catch(err => {
+        res.status(422).json({message: `A short url with a path of (${path}) already exists.`}).send();
     });
-    res.json({}).send();
 });
 
 module.exports = router;
