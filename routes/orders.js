@@ -119,7 +119,7 @@ router.post('/', async (req, res) => {
     // Get last order
     let err_l,
         last_order = await Order.findOne({
-            placed: { $lte: Date.now() },
+            placed: { $lte: moment.utc().toDate() },
             region: region._id,
             $or: [{ phase: 1 }, { phase: 2 }],
         })
@@ -138,7 +138,7 @@ router.post('/', async (req, res) => {
 
     // Create new order
     let order = new Order({
-        order_number: Date.now().toString(),
+        order_number: moment.utc().toString(),
         phone_number: phone_number,
         placed: moment.utc(new Date()).toDate(),
         estimated_delivery: moment
