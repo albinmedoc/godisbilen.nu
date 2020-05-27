@@ -13,7 +13,6 @@ const OrderSchema = mongoose.Schema({
     placed: {
         type: Date,
         required: true,
-        default: Date.now,
     },
     phase: {
         type: Number,
