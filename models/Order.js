@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const GeoJSON = require('mongoose-geojson-schema');
+require('mongoose-geojson-schema');
 
-const OrderSchema = mongoose.Schema({
+const schema = mongoose.Schema({
     order_number: {
         type: String,
         required: true,
@@ -38,4 +38,4 @@ const OrderSchema = mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('Order', OrderSchema);
+module.exports = mongoose.model('Order', schema);

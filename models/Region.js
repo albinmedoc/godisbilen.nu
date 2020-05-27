@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const GeoJSON = require('mongoose-geojson-schema');
+require('mongoose-geojson-schema');
 
-const RegionSchema = mongoose.Schema({
+const schema = mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -17,4 +17,4 @@ const RegionSchema = mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('Region', RegionSchema);
+module.exports = mongoose.model('Region', schema);
