@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const moment = require('moment');
+const BudgetSMS = require('../utils/sms');
 const Order = require('../models/Order');
 const Region = require('../models/Region');
 const utilsLocation = require('../utils/location');
@@ -150,7 +151,16 @@ router.post('/', async (req, res) => {
     });
     order.save();
 
-    res.json(order).send();
+    // Skicka sms
+    let sms = new BudgetSMS();
+    sms.from('Godisbilen')
+        .to(process.env.ADMIN_PHONE_NUMBER)
+        .message('Ny beställning!')
+        .send()
+        .then((result) => {
+            res.json(result).send();
+        })
+        .catch((err) => console.log(err));
 });
 
 module.exports = router;
