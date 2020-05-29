@@ -22,4 +22,22 @@ const timeBetween = async (loc1, loc2) => {
     }
 };
 
+const reverse_geocode = async (lat, lng) => {
+    try {
+        let res = await client.reverseGeocode({
+            params: {
+                latlng: `${lat}, ${lng}`,
+                key: process.env.GOOGLE_MAPS_API_KEY,
+            },
+        });
+        if (res.data.status === Status.OK) {
+            return(res.data.results[0].formatted_address);
+        }
+        return undefined;
+    } catch (error) {
+        return undefined;
+    }
+};
+
 exports.timeBetween = timeBetween;
+exports.reverse_geocode = reverse_geocode;
