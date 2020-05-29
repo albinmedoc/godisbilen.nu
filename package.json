@@ -4,6 +4,7 @@
   "description": "Generate pdf-files with a set of giftcards which can be cut out. Every giftcard has an unique number.",
   "main": "server.js",
   "scripts": {
+    "start": "nodemon start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Albin Médoc",
@@ -13,6 +14,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.9.16",
     "morgan": "^1.10.0",
+    "nodemon": "^2.0.4",
     "pdf-creator-node": "^1.4.1"
   }
 }
