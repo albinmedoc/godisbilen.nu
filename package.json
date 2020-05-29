@@ -1,0 +1,17 @@
+{
+  "name": "godisbilen-giftcard",
+  "version": "1.0.0",
+  "description": "Generate pdf-files with a set of giftcards which can be cut out. Every giftcard has an unique number.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Albin Médoc",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.16",
+    "morgan": "^1.10.0"
+  }
+}
