@@ -20,3 +20,6 @@ const generate_code = (lenght) => {
 
     return result;
 };
+
+module.exports.generate_codes = generate_codes;
+module.exports.generate_code = generate_code;
