@@ -14,7 +14,7 @@ const create = async (document, options) => {
             if (err.code === 'ENOENT') {
                 reject(new Error('File not found'));
             } else {
-                throw err;
+                reject(err);
             }
         }
 
