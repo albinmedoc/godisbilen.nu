@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const path = require('path');
 const pdf = require('./utils/pdf');
-const code = require('./utils/code');
+const {generate_codes} = require('./utils/code');
 
 // Load env
 dotenv.config({
@@ -44,7 +44,7 @@ app.get('/giftcodes/generate', (req, res) => {
 
     let logo = path.join('file://', __dirname, '/template/logo.svg');
 
-    let codes = code.generate_codes(10, 15);
+    let codes = generate_codes(10, 15);
 
     let options = {
         format: 'A4',
