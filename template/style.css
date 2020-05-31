@@ -1,0 +1,117 @@
+html {
+    zoom: 0.75;
+}
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 7px;
+    -webkit-print-color-adjust: exact;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Righteous', cursive;
+}
+
+.page {
+    position: relative;
+    height: 297mm;
+    width: 210mm;
+    display: block;
+    page-break-after: auto;
+    margin: 50px;
+    overflow: hidden;
+}
+
+@media print {
+    .page {
+        margin: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    .giftcards_container {
+        width: calc((70mm + 4px) * 2);
+    }
+
+    .giftcards_container > .giftcard {
+        width: 70mm;
+        height: 45mm;
+        float: left;
+        display: block;
+        border: 1px solid black;
+        text-align: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-evenly;
+    }
+
+    .giftcards_container > .giftcard > * {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        width: 100%;
+    }
+
+    /* Front side */
+
+    .giftcards_container.front > .giftcard > * {
+        width: 90%;
+        padding: 2mm 0;
+    }
+
+    .giftcards_container.front > .giftcard > .header {
+        font-size: 5mm;
+    }
+
+    .giftcards_container.front > .giftcard > .code {
+        font-size: 3mm;
+    }
+
+    /* Back side */
+
+    .giftcards_container.back {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .giftcards_container.back > .giftcard > * {
+        padding: 4mm 0;
+    }
+
+    .giftcards_container.back > .giftcard > ul {
+        list-style-type: none;
+    }
+
+    .giftcards_container.back > .giftcard > ul > li {
+        font-size: 3mm;
+        padding: 1mm;
+    }
+
+    .giftcards_container.back > .giftcard > .form {
+        width: 80%;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .giftcards_container.back > .giftcard > .form > span {
+        font-size: 2mm;
+    }
+
+    .giftcards_container.back > .giftcard > .form > span:nth-child(1) {
+        margin-right: 20mm;
+    }
+
+    .giftcards_container.back > .giftcard > .form > hr {
+        border: none;
+        border-top: 1px solid black;
+    }
+}

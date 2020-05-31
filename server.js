@@ -34,26 +34,27 @@ mongoose.connect(
     }
 );
 
-app.get('/test', (req, res) => {
+app.get('/giftcodes/generate', (req, res) => {
     res.setHeader('Content-type', 'application/pdf');
     res.setHeader('Content-Disposition', 'attachment; filename.pdf');
 
     let html = path.join(__dirname, '/template/template.html');
 
+    let css = path.join('file://', __dirname, '/template/style.css');
+
     let logo = path.join('file://', __dirname, '/template/logo.svg');
 
     let codes = code.generate_codes(10, 15);
-    
 
     let options = {
         format: 'A4',
         orientation: 'portrait',
-        border: "5mm",
+        border: '5mm',
     };
 
     let document = {
         filename: html,
-        data: { logo: logo, codes: codes }
+        data: { css: css, logo: logo, codes: codes },
     };
 
     pdf.create(document, options).then((buffer) => {

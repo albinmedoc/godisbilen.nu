@@ -2,141 +2,41 @@
     <head>
         <meta charset="utf8" />
         <title>Godisbilen giftcard</title>
-        <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-        <style>
-
-            html{
-                zoom: 0.75;
-            }
-            html,
-            body {
-                margin: 0;
-                padding: 0;
-                font-weight: 500;
-                font-size: 7px;
-                -webkit-print-color-adjust: exact;
-                -webkit-box-sizing: border-box;
-                box-sizing: border-box;
-                font-family: 'Righteous', cursive;
-            }
-
-            .page {
-                position: relative;
-                height: 297mm;
-                width: 210mm;
-                display: block;
-                page-break-after: auto;
-                margin: 50px;
-                overflow: hidden;
-            }
-
-            table{
-                border-collapse: collapse;
-                width: 160mm;
-            }
-
-            table, td, th {  
-                border: 1px solid #ddd;
-                text-align: center;
-              }
-
-            td{
-                width: 80mm;
-                height: 50mm;
-            }
-
-            td > img{
-                width: 90%;
-            }
-
-            @media print {
-                .page {
-                    margin: 0;
-                    height: 100%;
-                    width: 100%;
-                }
-
-                table{
-                    border-collapse: collapse;
-                    width: 160mm;
-                }
-
-                table, td, th {  
-                    border: 1px solid #ddd;
-                    text-align: center;
-                  }
-
-                td{
-                    width: 80mm;
-                    height: 50mm;
-                }
-            }
-        </style>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
+            rel="stylesheet"
+        />
+        <link href="{{css}}" rel="stylesheet" />
     </head>
     <body>
         <div class="page">
-            <table>
-                <tr>
-                    <td class="giftcard">
-                        <h2>Presentkort</h2>
-                        <img src="{{logo}}">
-                        <p class="code">{{ codes.[0]}}</p>
-                    </td>
-                    <td class="giftcard">
-                        <h2>Presentkort</h2>
-                        <img src="{{logo}}">
-                        <p class="code">{{ codes.[1]}}</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="giftcard">
-                        <h2>Presentkort</h2>
-                        <img src="{{logo}}">
-                        <p class="code">{{ codes.[2]}}</p>
-                    </td>
-                    <td class="giftcard">
-                        <h2>Presentkort</h2>
-                        <img src="{{logo}}">
-                        <p class="code">{{ codes.[3]}}</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="giftcard">
-                        <h2>Presentkort</h2>
-                        <img src="{{logo}}">
-                        <p class="code">{{ codes.[4]}}</p>
-                    </td>
-                    <td class="giftcard">
-                        <h2>Presentkort</h2>
-                        <img src="{{logo}}">
-                        <p class="code">{{ codes.[5]}}</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="giftcard">
-                        <h2>Presentkort</h2>
-                        <img src="{{logo}}">
-                        <p class="code">{{ codes.[6]}}</p>
-                    </td>
-                    <td class="giftcard">
-                        <h2>Presentkort</h2>
-                        <img src="{{logo}}">
-                        <p class="code">{{ codes.[7]}}</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="giftcard">
-                        <h2>Presentkort</h2>
-                        <img src="{{logo}}">
-                        <p class="code">{{ codes.[8]}}</p>
-                    </td>
-                    <td class="giftcard">
-                        <h2>Presentkort</h2>
-                        <img src="{{logo}}">
-                        <p class="code">{{ codes.[9]}}</p>
-                    </td>
-                </tr>
-            </table>
+            <div class="giftcards_container front">
+                {{#each @root.codes}}
+                <div class="giftcard">
+                    <h2 class="header">Presentkort</h2>
+                    <img src="{{@root.logo}}" />
+                    <p class="code">{{this}}</p>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="page">
+            <div class="giftcards_container back">
+                {{#each @root.codes}}
+                <div class="giftcard back">
+                    <ul>
+                        <li>Presentkortet kan ej inbytas mot kontanter.</li>
+                        <li>Borttappat kort ersätts ej.</li>
+                        <li>Ångerrätt gäller inte för presentkort.</li>
+                    </ul>
+                    <div class="form">
+                        <span>Giltig t.o.m:</span>
+                        <span>Belopp:</span>
+                        <hr>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
         </div>
     </body>
 </html>
