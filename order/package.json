@@ -1,0 +1,25 @@
+{
+  "name": "godisbilen",
+  "version": "1.0.0",
+  "description": "Swedish website for ordering a \"Candy car\" to a specific adress",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Albin Médoc",
+  "license": "Creative Commons Attribution Share Alike 4.0 International",
+  "dependencies": {
+    "@googlemaps/google-maps-services-js": "^2.6.1",
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "moment": "^2.26.0",
+    "mongoose": "^5.9.15",
+    "mongoose-beautiful-unique-validation": "^7.1.1",
+    "mongoose-find-or-create": "^1.3.1",
+    "mongoose-geojson-schema": "^2.1.5",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4"
+  }
+}
