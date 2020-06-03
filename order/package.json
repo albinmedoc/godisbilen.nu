@@ -4,8 +4,7 @@
   "description": "Swedish website for ordering a \"Candy car\" to a specific adress",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon start"
   },
   "author": "Albin Médoc",
   "license": "Creative Commons Attribution-ShareAlike 4.0",
