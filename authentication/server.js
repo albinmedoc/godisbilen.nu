@@ -50,4 +50,6 @@ app.get('/authorize', async (req, res) => {
     }
 });
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT, () => {
+    console.log(`Authentication service started on port ${process.env.PORT}`);
+});

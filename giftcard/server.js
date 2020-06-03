@@ -62,4 +62,6 @@ app.get('/giftcodes/generate', async (req, res) => {
     });
 });
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT, () => {
+    console.log(`Giftcard service started on port ${process.env.PORT}`);
+});

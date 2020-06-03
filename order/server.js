@@ -36,4 +36,6 @@ const ordersRoute = require('./routes/orders');
 app.use('/orders', ordersRoute);
 
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT, () => {
+    console.log(`Order service started on port ${process.env.PORT}`);
+});
