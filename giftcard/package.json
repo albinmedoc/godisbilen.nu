@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Albin Médoc",
-  "license": "MIT",
+  "license": "Creative Commons Attribution-ShareAlike 4.0",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
