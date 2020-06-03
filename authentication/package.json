@@ -1,0 +1,29 @@
+{
+  "name": "authentication",
+  "version": "1.0.0",
+  "description": "Authentication service for Godisbilen.nu",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albinmedoc/godisbilen.nu.git"
+  },
+  "author": "Albin Médoc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albinmedoc/godisbilen.nu/issues"
+  },
+  "homepage": "https://github.com/albinmedoc/godisbilen.nu#readme",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.17",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4"
+  }
+}
