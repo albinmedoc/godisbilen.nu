@@ -34,7 +34,7 @@ mongoose.connect(
     }
 );
 
-app.get('/giftcodes/generate', (req, res) => {
+app.get('/giftcodes/generate', async (req, res) => {
     res.setHeader('Content-type', 'application/pdf');
     res.setHeader('Content-Disposition', 'attachment; filename.pdf');
 
@@ -44,7 +44,7 @@ app.get('/giftcodes/generate', (req, res) => {
 
     let logo = path.join('file://', __dirname, '/template/logo.svg');
 
-    let codes = generate_codes(10, 15);
+    let codes = await generate_codes(10, 15);
 
     let options = {
         format: 'A4',
