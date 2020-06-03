@@ -35,7 +35,5 @@ mongoose.connect(
 const ordersRoute = require('./routes/orders');
 app.use('/orders', ordersRoute);
 
-const shortURLRoute = require('./routes/short_url');
-app.use('/short_url', shortURLRoute);
 
 app.listen(process.env.PORT);
