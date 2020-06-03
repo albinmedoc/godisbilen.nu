@@ -6,9 +6,10 @@ const BudgetSMS = require('../utils/sms');
 const Order = require('../models/Order');
 const Region = require('../models/Region');
 const utilsLocation = require('../utils/location');
+const auth = require('../middleware/auth');
 
 // Get orders
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
     // Parse location
     try {
         var location = req.query.location
