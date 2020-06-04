@@ -2,15 +2,15 @@
 This application is used by the company "Godisbilen i Staffanstorp AB".
 
 
-## Installation
+## Installation for develompent
 1. Download the project from github
-    * `git clone https://github.com/albinmedoc/godisbilen-node`
+    * `git clone https://github.com/albinmedoc/godisbilen.nu`
 2. Make sure you have node.js & npm installed on your machine.
     * You can find the download link [here](https://nodejs.org/en/download/).
 3. Install dependencies.
     * Run `npm install` when you are in the root directory of the project.
-4. Start server
-    * Run `npm run start`
+4. Start all microservices
+    * Run `npm run dev`
 
 
 ## Contributing
