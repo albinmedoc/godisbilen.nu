@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "install": "concurrently \"npm install --prefix authentication\" \"npm install --prefix giftcard\" \"npm install --prefix order\"",
     "authentication": "npm run start --prefix authentication",
     "giftcard": "npm run start --prefix giftcard",
     "order": "npm run start --prefix order",
