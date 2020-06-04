@@ -6,8 +6,17 @@
   "scripts": {
     "start": "nodemon start"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albinmedoc/godisbilen.nu.git"
+  },
   "author": "Albin Médoc",
+  "private": true,
   "license": "Creative Commons Attribution-ShareAlike 4.0",
+  "bugs": {
+    "url": "https://github.com/albinmedoc/godisbilen.nu/issues"
+  },
+  "homepage": "https://github.com/albinmedoc/godisbilen.nu#readme",
   "dependencies": {
     "@googlemaps/google-maps-services-js": "^2.6.1",
     "axios": "^0.19.2",

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "authentication":  "npm run start --prefix authentication",
+    "authentication": "npm run start --prefix authentication",
     "giftcard": "npm run start --prefix giftcard",
     "order": "npm run start --prefix order",
     "dev": "concurrently \"npm run authentication\" \"npm run giftcard\" \"npm run order\""
@@ -13,6 +13,7 @@
     "url": "git+https://github.com/albinmedoc/godisbilen.nu.git"
   },
   "author": "Albin Médoc",
+  "private": true,
   "license": "Creative Commons Attribution-ShareAlike 4.0",
   "bugs": {
     "url": "https://github.com/albinmedoc/godisbilen.nu/issues"
