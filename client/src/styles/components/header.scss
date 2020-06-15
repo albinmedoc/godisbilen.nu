@@ -1,0 +1,34 @@
+@use './hamburger_icon.scss';
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--header-background-color);
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.397);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.397);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.397);
+    z-index: 2;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    position: relative;
+}
+
+#logo > img{
+    height: calc(100% - 20px);
+    display: none;
+}
+
+@media (min-width:325px) {
+    #logo > img{
+        display: block;
+    }
+}
