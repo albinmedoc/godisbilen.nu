@@ -5,6 +5,7 @@
   "scripts": {
     "install": "concurrently \"npm install --prefix authentication\" \"npm install --prefix giftcard\" \"npm install --prefix order\"",
     "authentication": "npm run start --prefix authentication",
+    "client": "npm run start --prefix client",
     "giftcard": "npm run start --prefix giftcard",
     "order": "npm run start --prefix order",
     "dev": "concurrently \"npm run authentication\" \"npm run giftcard\" \"npm run order\""
