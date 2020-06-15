@@ -1,0 +1,48 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "rm -rf dist && parcel src/views/[^_]*.njk",
+    "build": "rm -rf dist && parcel build src/views/[^_]*.njk --no-source-maps",
+    "start": "npm run build && node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albinmedoc/godisbilen.nu.git"
+  },
+  "author": "Albin Médoc",
+  "private": true,
+  "license": "Creative Commons Attribution-ShareAlike 4.0",
+  "bugs": {
+    "url": "https://github.com/albinmedoc/godisbilen.nu/issues"
+  },
+  "homepage": "https://github.com/albinmedoc/godisbilen.nu#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-custom-dist-structure": "^1.1.13",
+    "parcel-plugin-nunjucks": "^2.2.1",
+    "sass": "^1.26.8"
+  },
+  "dependencies": {
+    "consolidate": "^0.15.1",
+    "express": "^4.17.1",
+    "nunjucks": "^3.2.1"
+  },
+  "customDistStructure": {
+    "config": {
+      ".js": "static/scripts",
+      "static/images": [
+        ".jpg",
+        ".png",
+        ".svg"
+      ],
+      ".ttf": "static/fonts",
+      ".css": "static/styles"
+    },
+    "options": {
+      "development": true
+    }
+  }
+}
