@@ -8,7 +8,7 @@
     "client": "npm run start --prefix client",
     "giftcard": "npm run start --prefix giftcard",
     "order": "npm run start --prefix order",
-    "dev": "concurrently \"npm run authentication\" \"npm run giftcard\" \"npm run order\""
+    "dev": "concurrently \"npm run authentication\" \"npm run client\" \"npm run giftcard\" \"npm run order\""
   },
   "repository": {
     "type": "git",
