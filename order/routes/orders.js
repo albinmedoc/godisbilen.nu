@@ -97,8 +97,7 @@ router.post('/', async (req, res) => {
     let lng = req.body.lng;
     let phone_number = req.body.phone_number;
     if (!lat || !lng || !phone_number) {
-        res.status(422).send();
-        return;
+        return res.status(422).send();
     }
 
     let point = {
