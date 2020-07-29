@@ -112,7 +112,7 @@ router.post('/', async (req, res) => {
             .where('bounds')
             .intersects(point)
             .exec();
-    if (err_r) res.status(500).send();
+    if (err_r) return res.status(500).send();
     if (!region)
         res.status(422)
             .json({ message: 'Coordinates is outside regions' })
@@ -127,7 +127,7 @@ router.post('/', async (req, res) => {
         })
             .sort({ placed: 'descending' })
             .exec();
-    if (err_l) res.status(500).send();
+    if (err_l) return res.status(500).send();
 
     // Calculate time between the new order´s location and last order´s location if last order exists, otherwise start location
     let err_t,
@@ -137,6 +137,7 @@ router.post('/', async (req, res) => {
                 : JSON.parse(process.env.START_LOC),
             point.coordinates
         );
+    if (err_t) return res.status(500).send();
 
     // Create new order
     let order = new Order({
@@ -152,7 +153,10 @@ router.post('/', async (req, res) => {
     });
     order.save();
 
-    // Skicka sms
+    // Send 200 response, order was confirmed and saved
+    res.json(JSON.stringify(order)).status(200).send();
+
+    // Send SMS
     let sms = new BudgetSMS();
     sms.from('Godisbilen')
         .to(process.env.ADMIN_PHONE_NUMBER)
